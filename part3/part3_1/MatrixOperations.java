@@ -115,9 +115,9 @@ public class MatrixOperations {
     public static int diagonalSum(int[][] matrix) {
         int sum = 0;
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-       // for (int i = 0; i < ?; i++) {
-       //     sum += matrix[?][?];
-        //}
+        for (int i = 0; i < matrix.length; i++) {
+            sum += matrix[i][i];
+        }
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
         return sum;
     }

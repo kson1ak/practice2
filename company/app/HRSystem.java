@@ -23,7 +23,7 @@ public class HRSystem {
         //System.out.println(emp.age);             // Строка B
         //System.out.println(emp.salary);          // Строка C
        // System.out.println(emp.password);        // Строка D
-        System.out.println(emp.getRole());       // Строка E
+        // System.out.println(emp.getRole());       // Строка E
        // emp.promote(5000);                       // Строка F
        // emp.printSummary();                      // Строка G
        // emp.validatePassword("secret");          // Строка H

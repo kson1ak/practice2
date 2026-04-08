@@ -19,11 +19,11 @@
 
 | Строка | Обращаемый член | Модификатор | Компилируется? (да/нет) | Причина |
 |--------|----------------|-------------|:-----------------------:|---------|
-| A | `emp.name` | | | |
-| B | `emp.age` | | | |
-| C | `emp.salary` | | | |
-| D | `emp.password` | | | |
-| E | `emp.getRole()` | | | |
-| F | `emp.promote(5000)` | | | |
-| G | `emp.printSummary()` | | | |
-| H | `emp.validatePassword("secret")` | | | |
+| A | `emp.name` | public | да | public доступен из любого пакета |
+| B | `emp.age` | package-private | нет | Доступен только внутри пакета company.core |
+| C | `emp.salary` | protected | нет | Требуется наследование или тот же пакет |
+| D | `emp.password` | private | нет | Доступен только внутри класса Employee |
+| E | `emp.getRole()` | public | да | public доступен из любого пакета |
+| F | `emp.promote(5000)` | package-private | нет | Доступен только внутри пакета company.core |
+| G | `emp.printSummary()` | protected | нет | Требуется наследование (HRSystem должен быть подклассом Employee) |
+| H | `emp.validatePassword("secret")` | private | нет | Доступен только внутри класса Employee |

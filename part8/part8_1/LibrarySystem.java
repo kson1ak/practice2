@@ -46,8 +46,7 @@ public class LibrarySystem {
         /** Возвращает русское название жанра. */
         public String getRussianName() {
             // ▼ ВАШ КОД ЗДЕСЬ ▼
-return "";
-
+            return russianName;
             // ▲ КОНЕЦ ВАШЕГО КОДА ▲
         }
 
@@ -119,7 +118,6 @@ return "";
         @Override
         public String getInfo() {
             return "[Полка " + shelf + "] " + book.title() + " — " + book.author();
-
         }
     }
 
@@ -133,7 +131,6 @@ return "";
         @Override
         public String getInfo() {
             return "[" + format + ", " + sizeMB + " МБ] " + book.title() + " — " + book.author();
-
         }
     }
 
@@ -165,7 +162,12 @@ return "";
          */
         public void printCatalog() {
             // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+            for (LibraryItem item : items) {
+                switch (item) {
+                    case PhysicalBook pb -> System.out.println("Физ.: " + pb.getInfo());
+                    case EBook eb -> System.out.println("Эл.:  " + eb.getInfo());
+                }
+            }
             // ▲ КОНЕЦ ВАШЕГО КОДА ▲
         }
 
@@ -176,12 +178,10 @@ return "";
          *   items.stream().collect(Collectors.groupingBy(i -> i.book().genre(), () -> new EnumMap<>(Genre.class), Collectors.toList()));
          */
         public Map<Genre, List<LibraryItem>> groupByGenre() {
-
             return items.stream().collect(Collectors.groupingBy(
                     i -> i.book().genre(),
                     () -> new EnumMap<>(Genre.class),
                     Collectors.toList()));
-
         }
 
         /**
@@ -192,7 +192,7 @@ return "";
          */
         public double totalValue() {
             // ▼ ВАШ КОД ЗДЕСЬ ▼
-return 0.0;
+            return items.stream().mapToDouble(i -> i.book().price()).sum();
             // ▲ КОНЕЦ ВАШЕГО КОДА ▲
         }
 
@@ -204,8 +204,8 @@ return 0.0;
          */
         public Optional<Book> mostExpensive() {
             // ▼ ВАШ КОД ЗДЕСЬ ▼
-return null;
-           // ▲ КОНЕЦ ВАШЕГО КОДА ▲
+            return items.stream().map(LibraryItem::book).max(Comparator.comparingDouble(Book::price));
+            // ▲ КОНЕЦ ВАШЕГО КОДА ▲
         }
 
         /**
@@ -271,6 +271,5 @@ return null;
         lib.mostExpensive().ifPresent(b -> System.out.println("Самая дорогая: " + b));
 
         System.out.println("\nАвторы программирования: " + lib.authorsByGenre(Genre.PROGRAMMING));
-
     }
 }

@@ -21,38 +21,41 @@ package company.core;
  */
 public class EmployeeFixed {
 
-    private String name;
-    private int age;
+    private final String name;
+    private final int age;
     private double salary;
-    private String password;
+    private final String password;
 
     /**
      * Подсказка: this.name = name; this.age = age; ...
      */
     public EmployeeFixed(String name, int age, double salary, String password) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        this.name = name;
+        this.age = age;
+        this.salary = salary;
+        this.password = password;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     /** Верните name */
     public String getName() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return null; // TODO: верните name
+        return name; // TODO: верните name
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     /** Верните age */
     public int getAge() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: верните age
+        return age; // TODO: верните age
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     /** Верните salary */
     public double getSalary() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: верните salary
+        return salary; // TODO: верните salary
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -64,7 +67,7 @@ public class EmployeeFixed {
      */
     public void promote(double raise) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        this.salary += raise;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -74,7 +77,7 @@ public class EmployeeFixed {
      */
     public void printSummary() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        System.out.println(name + ", " + age + " лет, " + salary + " руб.");
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -88,7 +91,7 @@ public class EmployeeFixed {
      */
     public boolean authenticate(String input) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return false; // TODO: верните validatePassword(input)
+        return validatePassword(input); // TODO: верните validatePassword(input)
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 }

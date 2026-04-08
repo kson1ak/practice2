@@ -27,7 +27,8 @@ public class DatabaseService implements Loggable {
      */
     public void connect(String url) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        log("Подключение к " + url);
+        log("Подключение установлено");
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 }

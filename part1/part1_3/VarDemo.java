@@ -36,32 +36,32 @@ public class VarDemo {
         // === Рабочие примеры var ===
 
         // TODO: Пример 1 — целое число
-        //   var number = 42;
-         //  System.out.println(number + " -> " + ((Object) number).getClass().getSimpleName());
+        var number = 42;
+        System.out.println(number + " -> " + ((Object) number).getClass().getSimpleName());
 
         // TODO: Пример 2 — строка
-          // var text = "Java";
-          // System.out.println(text + " -> " + text.getClass().getSimpleName());
+        var text = "Java";
+        System.out.println(text + " -> " + text.getClass().getSimpleName());
 
         // TODO: Пример 3 — ArrayList
-        //   var list = new ArrayList<>(Arrays.asList("один", "два"));
-        //   System.out.println(list + " -> " + list.getClass().getSimpleName());
+        var list = new ArrayList<>(Arrays.asList("один", "два"));
+        System.out.println(list + " -> " + list.getClass().getSimpleName());
 
         // TODO: Пример 4 — массив
-        //   var array = new int[]{1, 2, 3};
-        //   System.out.println(Arrays.toString(array) + " -> " + array.getClass().getSimpleName());
+        var array = new int[]{1, 2, 3};
+        System.out.println(Arrays.toString(array) + " -> " + array.getClass().getSimpleName());
 
         // TODO: Пример 5 — ваш собственный объект (например, BankAccount)
-        //   var account = new BankAccount("Тест", 0);
-        //   System.out.println(account.getClass().getSimpleName() + " -> " + account.getClass().getSimpleName());
+        var account = new BankAccount("Тест", 0);
+        System.out.println(account.getClass().getSimpleName() + " -> " + account.getClass().getSimpleName());
 
         // TODO: раскомментируйте примеры выше по одному и запустите программу.
 
         // === Случаи, где var НЕ компилируется ===
 
-        // 1. Без инициализации:  var x;            // нельзя определить тип
-        // 2. Как параметр:       void test(var p)   // параметры требуют явный тип
-        // 3. Как поле класса:    (показано выше)
-        // 4. С null:             var nothing = null; // null не имеет типа
+        // 1. Без инициализации: var x; // нельзя определить тип
+        // 2. Как параметр: void test(var p) // параметры требуют явный тип
+        // 3. Как поле класса: (показано выше)
+        // 4. С null: var nothing = null; // null не имеет типа
     }
 }

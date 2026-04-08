@@ -14,6 +14,7 @@ import java.util.function.*;
  *
  * Как запустить: нажмите ▶ рядом с main.
  */
+
 public class RefactorOriginal {
     public static void main(String[] args) {
         List<String> cities = Arrays.asList("Москва", "Берлин", "Токио", "Нью-Йорк", "Париж");

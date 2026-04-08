@@ -26,37 +26,67 @@ public class RefactorStep1 {
 
         // 1. Сортировка по длине → замените анонимный класс на лямбду
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // cities.sort((a, b) -> Integer.compare(a.length(), b.length()));
+        cities.sort((a, b) -> Integer.compare(a.length(), b.length()));
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // 2. Вывод каждого элемента
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // cities.forEach(city -> System.out.println(city));
+        cities.forEach(city -> System.out.println(city));
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // 3. Преобразование в верхний регистр
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // Function<String, String> toUpper = s -> s.toUpperCase();
+        Function<String, String> toUpper = s -> s.toUpperCase();
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // 4. Проверка длины > 5
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // Predicate<String> isLong = s -> s.length() > 5;
+        Predicate<String> isLong = s -> s.length() > 5;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // 5. Формирование строки с восклицательным знаком
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // Function<String, String> exclaim = s -> s + "!";
+        Function<String, String> exclaim = s -> s + "!";
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // 6. Создание нового списка
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        // Supplier<List<String>> listFactory = () -> new ArrayList<>();
+        Supplier<List<String>> listFactory = () -> new ArrayList<>();
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
 
         // Использование (скопируйте из RefactorOriginal и адаптируйте)
         // ▼ ВАШ КОД ЗДЕСЬ ▼
+        System.out.println("=== Сортировка по длине ===");
+        System.out.println(cities);
 
+        System.out.println("\n=== Вывод элементов ===");
+        cities.forEach(city -> System.out.println(city));
+
+        System.out.println("\n=== Преобразование в верхний регистр ===");
+        List<String> upperCities = new ArrayList<>();
+        for (String city : cities) {
+            upperCities.add(toUpper.apply(city));
+        }
+        System.out.println(upperCities);
+
+        System.out.println("\n=== Фильтрация (длина > 5) ===");
+        for (String city : cities) {
+            if (isLong.test(city)) {
+                System.out.println(city);
+            }
+        }
+
+        System.out.println("\n=== С восклицательным знаком ===");
+        List<String> excitedCities = new ArrayList<>();
+        for (String city : cities) {
+            excitedCities.add(exclaim.apply(city));
+        }
+        System.out.println(excitedCities);
+
+        System.out.println("\n=== Новый список через Supplier ===");
+        List<String> newList = listFactory.get();
+        newList.addAll(cities);
+        System.out.println(newList);
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 }

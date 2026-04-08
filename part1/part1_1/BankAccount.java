@@ -2,18 +2,18 @@ package part1.part1_1;
 
 /**
  * Задание 1.1 — Банковский счёт
- *
+
  * Тема: статические и экземплярные блоки инициализации, инкапсуляция.
- *
+
  * Ключевая теория:
  *   - static { ... } выполняется ОДИН РАЗ при загрузке класса (после статических полей, до new).
  *   - { ... } (блок экземпляра) выполняется при каждом new, после явной инициализации полей в объявлении, ДО тела конструктора.
  *   - Порядок при new: блок экземпляра → конструктор (статическая часть класса уже выполнена один раз).
  *   - static-поле принадлежит классу, а не объекту (общее для всех экземпляров).
  *   - Для форматирования double: String.format("%.2f", value)
- *
+
  * Как запустить: нажмите ▶ рядом с main.
- *
+
  * Ожидаемый вывод:
  *   Банковская система инициализирована
  *   Создание счёта #1
@@ -28,25 +28,25 @@ package part1.part1_1;
  */
 public class BankAccount {
 
-    private String owner;
+    private final String owner;
     private double balance;
-    private String accountNumber;   // формат: "ACC-1", "ACC-2" и т.д.
+    private final String accountNumber;   // формат: "ACC-1", "ACC-2" и т.д.
 
     private static int totalAccounts;
-    private static String bankName;
 
     static {
         // TODO: bankName = "Java Bank"; выведите "Банковская система инициализирована"
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        String bankName = "Java Bank";
+        System.out.println("Банковская система инициализирована");
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     {
         // TODO: totalAccounts++; выведите "Создание счёта #" + totalAccounts
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-totalAccounts++;
-        System.out.println("hi");
+        totalAccounts++;
+        System.out.println("Создание счёта #" + totalAccounts);
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -56,7 +56,9 @@ totalAccounts++;
      */
     public BankAccount(String owner, double initialBalance) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        this.owner = owner;
+        this.balance = initialBalance;
+        this.accountNumber = "ACC-" + totalAccounts;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -65,7 +67,11 @@ totalAccounts++;
      */
     public void deposit(double amount) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        if (amount <= 0) {
+            System.out.println("Ошибка: сумма должна быть положительной");
+            return;
+        }
+        this.balance += amount;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -75,13 +81,21 @@ totalAccounts++;
      */
     public void withdraw(double amount) {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-
+        if (amount <= 0) {
+            System.out.println("Ошибка: сумма должна быть положительной");
+            return;
+        }
+        if (this.balance < amount) {
+            System.out.println("Ошибка: недостаточно средств");
+            return;
+        }
+        this.balance -= amount;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
     public static int getTotalAccounts() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return 0; // TODO: верните totalAccounts
+        return totalAccounts;
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
@@ -92,7 +106,7 @@ totalAccounts++;
     @Override
     public String toString() {
         // ▼ ВАШ КОД ЗДЕСЬ ▼
-        return ""; // TODO: реализуйте формат выше
+        return String.format("[%s] %s: %.2f руб.", accountNumber, owner, balance);
         // ▲ КОНЕЦ ВАШЕГО КОДА ▲
     }
 
